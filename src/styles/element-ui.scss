@@ -1,0 +1,48 @@
+// 覆盖部分element-ui的样式
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+}
+
+.el-upload {
+  input[type='file'] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+// 修复el-dialog组件样式
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+// 重新定义elemnt-ui的上传组件样式
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+// 下拉菜单
+.el-dropdown-menu {
+  a {
+    display: block;
+  }
+}
+
+// 修复el-date-picker组件样式
+.el-range-separator {
+  box-sizing: content-box;
+}
