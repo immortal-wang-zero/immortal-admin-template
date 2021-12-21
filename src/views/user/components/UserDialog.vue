@@ -21,31 +21,31 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="用户账号" prop="userName">
+            <el-form-item label="用户账号">
               <el-input v-model="userForm.userName" type="text" placeholder="请输入用户账号" disabled />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="6">
           <el-col :span="12">
-            <el-form-item label="用户姓名" prop="realName">
+            <el-form-item label="用户姓名">
               <el-input v-model="userForm.realName" type="text" placeholder="请输入用户姓名" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="用户邮箱" prop="userEmail">
+            <el-form-item label="用户邮箱">
               <el-input v-model="userForm.userEmail" type="text" placeholder="请输入用户邮箱" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="6">
           <el-col :span="12">
-            <el-form-item label="用户电话" prop="userPhone">
+            <el-form-item label="用户电话">
               <el-input v-model="userForm.userPhone" type="text" placeholder="请输入用户电话" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="用户性别" prop="userSex">
+            <el-form-item label="用户性别">
               <el-switch
                 v-model="userForm.userSex"
                 inactive-text="男"
@@ -58,14 +58,14 @@
         </el-row>
         <el-row :gutter="6">
           <el-col :span="16">
-            <el-form-item label="用户密码" prop="userPassword">
+            <el-form-item label="用户密码">
               <el-input v-model="userForm.userPassword" type="text" placeholder="请输入用户密码" />
             </el-form-item>
           </el-col>
         </el-row>
         <el-row :gutter="6">
           <el-col :span="12">
-            <el-form-item label="用户角色" prop="userRole">
+            <el-form-item label="用户角色">
               <el-select v-model="userForm.userRole" placeholder="请选择用户角色">
                 <el-option :value="0" label="管理员" />
                 <el-option :value="1" label="普通员工" />
@@ -73,7 +73,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="状态" prop="userStatus">
+            <el-form-item label="状态">
               <el-radio-group v-model="userForm.userStatus">
                 <el-radio :label="0">正常</el-radio>
                 <el-radio :label="1">禁用</el-radio>
@@ -81,7 +81,7 @@
             </el-form-item>
           </el-col>
         </el-row>
-        <el-form-item label="备注" prop="remark">
+        <el-form-item label="备注">
           <el-input v-model="userForm.remark" type="textarea" placeholder="请输入备注" />
         </el-form-item>
         <el-form-item v-if="!isReadOnly">
@@ -118,6 +118,20 @@ export default {
   },
   data() {
     return {
+      // 用户表单初始值
+      defaultUserForm: {
+        userId: '',
+        userName: '',
+        realName: '',
+        userEmail: '',
+        userPhone: '',
+        userSex: 0,
+        userPassword: '',
+        userRole: 1,
+        userStatus: 0,
+        remark: ''
+      },
+      // 用户表单
       userForm: {
         userId: '',
         userName: '',
@@ -154,7 +168,8 @@ export default {
     },
 
     handleClosed() {
-      this.$refs['userFormRef'].resetFields()
+      // 手动重置表单 使用resetFields()方法容易出错
+      this.userForm = this.defaultUserForm
     },
 
     getUserInfo() {
