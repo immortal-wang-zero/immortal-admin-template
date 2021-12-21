@@ -9,13 +9,8 @@ function resolve(dir) {
 
 const name = defaultSettings.title || '基础后台模板' // 页面标题
 
-// If your port is set to 80,
-// use administrator privileges to execute the command line.
-// For example, Mac: sudo npm run
-// You can change the port by the following methods:
 // 配置端口，例如：yarn dev --port = 端口号
-// port = 9528 npm run dev OR npm run dev --port = 9528
-const port = process.env.port || process.env.npm_config_port || 9528 // dev port
+const port = process.env.port || process.env.npm_config_port || 2345
 
 // 配置项信息可以去 https://cli.vuejs.org/config/ 查看
 module.exports = {
